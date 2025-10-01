@@ -1,8 +1,8 @@
 import streamlit as st
 
-st.title("Saying Hello.")
+st.title("... and you are.")
 #name ='test'
-#st.write(f'Name is {name}')
+st.write(f'Name is {name}') # gives a name error
 name = st.text_input("And you are?")
 
 if name:
