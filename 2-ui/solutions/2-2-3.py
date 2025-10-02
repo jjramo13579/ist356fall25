@@ -11,7 +11,7 @@ text_file_data = st.file_uploader("Upload the order file", type=["txt"]) # creat
 if text_file_data:
     binary_contents = text_file_data.getvalue()
     # gets the contents of file as a binary object
-    text_contents = StringIO(binary_contents.decode("utf-8")).read() # decodes the binary data into a string using UTF-8 encoding
+    text_contents = StringIO(binary_contents.decode("utf-8")).read() # decodes binary data into a string using UTF-8 encoding
     total = 0 #cumulate the sum of order amounts
     count = 0 #keep track of the orders found
     for line in text_contents.split("\n"): # go over each line of text, split at \n into list of strings
