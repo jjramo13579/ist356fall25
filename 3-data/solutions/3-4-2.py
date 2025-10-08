@@ -10,7 +10,7 @@ st.title("Dining Check Data")
 checks = pd.read_csv('https://raw.githubusercontent.com/mafudge/datasets/refs/heads/master/dining/check-data.csv')
 
 
-# transformations
+# Transformations
 
 
 
