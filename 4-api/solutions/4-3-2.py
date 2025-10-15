@@ -45,18 +45,3 @@ if st.button("Spell Check"):
         Here is the Text to check for spelling errors:
      
         '''
-        prompt += text
-
-        api_key = "ea044c96950db6cc0fab7ae1"
-        uri = "https://cent.ischool-iot.net/api/openai/generate"
-        data = { "query": prompt }
-        response = requests.post(uri, data=data, headers={"x-api-key": api_key})
-        response.raise_for_status()
-        result = response.json()
-        json_result = json.loads(result)
-        st.write(json_result)
-        st.write("CORRECTED TEXT:")
-        st.write(json_result['corrected-text'])
-        df = pd.DataFrame(json_result['corrections'])
-        st.write("CORRECTIONS:")
-        st.dataframe(df)
