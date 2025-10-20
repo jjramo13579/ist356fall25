@@ -32,12 +32,12 @@ st.title("Dining Check Data")
 
 # load the checks dataset into a dataframe
 checks = pd.read_csv('https://raw.githubusercontent.com/mafudge/datasets/refs/heads/master/dining/check-data.csv')
-
+st.dataframe(checks, width=1000)
 # transformations
 checks['total_amount_of_check_cleaned'] = checks['total amount of check'].apply(clean_currency)
 checks['gratuity_cleaned'] = checks['gratuity'].apply(clean_currency)
 
-#st.dataframe(checks, width=1000)
+st.dataframe(checks, width=1000)
 # Calculate new columns
 
 checks['price_per_item'] = checks['total_amount_of_check_cleaned'] / checks['total items on check']

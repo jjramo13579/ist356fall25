@@ -23,6 +23,10 @@ roster_df = pd.read_csv(f"{base}/roster.csv")
 st.dataframe(roster_df)
 
 
+-Extract 
+-Transform 
+-Load
+
 '''
 
 import pandas as pd
@@ -81,7 +85,6 @@ st.dataframe(poll_counts)
 # count of student responses by date
 student_responses = combined_df.pivot_table(index='netid', columns='date', values='answer', aggfunc='count')
 student_responses= student_responses.fillna(0)
-
 st.dataframe(student_responses)
 
 
