@@ -77,7 +77,7 @@ combined_df = pd.merge(roster_df, poll_df, how='left', left_on='netid', right_on
 st.dataframe(combined_df)
 
 
-# polls count for each date
+# max polls count for each date
 poll_counts = combined_df.pivot_table(index ='date', values ='poll_num', aggfunc='max')
 st.dataframe(poll_counts)
 
@@ -86,7 +86,6 @@ st.dataframe(poll_counts)
 student_responses = combined_df.pivot_table(index='netid', columns='date', values='answer', aggfunc='count')
 student_responses= student_responses.fillna(0)
 st.dataframe(student_responses)
-
 
 
 
@@ -106,6 +105,8 @@ st.dataframe(student_responses2)
 #make a copy of student_responses2 into a new dataframe
 summary = student_responses2.copy()
 summary['sessions'] = len(summary.columns)
+st.dataframe(summary)
+
 # apply the function to each row using lambda row
 #use row.value_counts() to count the number of AB and np in each row
 # after counting if AB or np is not present, return 0
@@ -115,7 +116,7 @@ summary['pct'] = (summary['AB'] + summary['np']) / summary['sessions']
 
 st.dataframe(summary)
 
-
+# merge summary with roster to get student names
 summary_with_names = pd.merge(roster_df, summary, left_on='netid', right_index=True)
 st.dataframe(summary_with_names)
 
