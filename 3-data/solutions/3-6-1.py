@@ -96,6 +96,7 @@ for col in student_responses2.columns:
     student_responses2[col] = student_responses2[col] / poll_counts.loc[col, 'poll_num']
     
     
+# every original data point in student_responses2 is replaced by the output of grade_attendance function when applied to values.
 # convert the percentages to grades
 for col in student_responses2.columns:
     student_responses2[col] = student_responses2[col].apply(grade_attendance)
@@ -104,7 +105,7 @@ st.dataframe(student_responses2)
 
 #make a copy of student_responses2 into a new dataframe
 summary = student_responses2.copy()
-summary['sessions'] = len(summary.columns)
+summary['sessions'] = len(summary.columns) # calculate total sessions
 st.dataframe(summary)
 
 # apply the function to each row using lambda row
@@ -117,6 +118,7 @@ summary['pct'] = (summary['AB'] + summary['np']) / summary['sessions']
 st.dataframe(summary)
 
 # merge summary with roster to get student names
+# use the netid column from roster_df and the index from summary dataframe to merge
 summary_with_names = pd.merge(roster_df, summary, left_on='netid', right_index=True)
 st.dataframe(summary_with_names)
 
