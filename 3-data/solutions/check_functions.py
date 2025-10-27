@@ -1,6 +1,6 @@
 def clean_currency(value:str) -> float:
     '''
-    This function will take a string value and remove the dollar sign and commas
+    This function will take a string value and remove the dollar sign and comma
     and return a float value.
     '''
     return float(value.replace(',', '').replace('$', ''))
