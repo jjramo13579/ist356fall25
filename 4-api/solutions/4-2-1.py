@@ -1,11 +1,29 @@
 import requests
 
 '''
-curl -X 'POST' \
-  'https://cent.ischool-iot.net/api/azure/entityrecognition' \
-  -H 'accept: application/json' \
-  -H 'X-API-KEY: ea044c96950db6cc0fab7ae1' \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'text=The%20Dallas%20Cowboys%20are%20a%20far%20better%20team%20than%20the%20New%20York%20Giants%20this%20year.%20The%20Giants%20have%20not%20won%20a%20conference%20game%20yet.'
+Post curl here
+
 '''
 
+
+
+import pandas as pd
+import numpy as np
+
+import streamlit as st
+import requests
+import json 
+
+
+
+def extract_entities(text: str)->dict:
+    '''
+    Extract entities from the text using Azure entity recognition API.
+    '''
+    
+# Complete function 
+
+
+text = st.text_area("Enter text to extract entities:")
+
+# Complete code to call the function and display results  
