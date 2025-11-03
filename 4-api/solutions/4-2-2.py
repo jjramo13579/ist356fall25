@@ -1,16 +1,17 @@
 import requests 
 import requests_cache as rq
+import pickle
 
 texts = [
     "I love IST356. It is the best course I've ever taken.", 
     "I hate the New York Giants.",
-    "I love IST356. It is the best course I've ever taken.", 
+    "I love IST256. It is the best course I've ever taken.", 
     "I don't like the New York Giants."
 ]
 
 cache = rq.clear_cache('sentiment.pkl') # clear or create a cache file named sentiment.pkl
-apikey = "your_api_key_here"
-headers = { 'x-api-key': 'ec25dc1e1297cfba51838bd3' }
+apikey = "ec25dc1e1297cfba51838bd3"
+headers = { 'x-api-key': apikey }
 url = "https://cent.ischool-iot.net/api/azure/sentiment"
 for text in texts: # loop over each string in the texts list 
     if text in cache: # check if the text was analysed before and is in the cache dictionary

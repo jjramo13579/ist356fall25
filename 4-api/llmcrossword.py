@@ -10,8 +10,8 @@ number = st.number_input("How Many Letters should cross this word? ", min_value=
 if st.button("Find Words"):
     with st.spinner("Searching for words..."):
         prompt = f"I am creating a crossword puzzle. I need to {number} other words that cross the word '{word}`. Can you suggest some words?"
-        api_key = "GETYOUROWNKEY"
-        uri = "https://cent.ischool-iot.net/api/openai/generate"
+        api_key = "ec25dc1e1297cfba51838bd3"
+        uri = "https://cent.ischool-iot.net/api/genai/generate"
         data = { "query": prompt }
         response = requests.post(uri, data=data, headers={"x-api-key": api_key})
         response.raise_for_status()

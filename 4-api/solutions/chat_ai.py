@@ -23,13 +23,14 @@ st.caption("Let's help you understand system prompts.")
 system_prompt = st.selectbox("Select a system prompt", prompts)
 
 
-if system_prompt:
+if system_prompt: # only run if there is a prompt
     # Initialize chat history
-    if "messages" not in st.session_state:
+
+    if "messages" not in st.session_state: # rerun from the top
         st.session_state.messages = [
             {"role": "system", "content": system_prompt}
-        ]
-
+        ] #keep track of the history of the chat
+        
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):

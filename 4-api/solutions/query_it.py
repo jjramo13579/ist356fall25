@@ -1,27 +1,26 @@
 import pandas as pd
-import requests 
+import requests
 import streamlit as st
 
-APIKEY = "YOURKEYHERE"
+APIKEY = "ec25dc1e1297cfba51838bd3"
+st.title("Query It")
 
-st.title("Query It!")
-st.caption("Ask a question of your data. Benefits of large context windows.")
-
-file = st.file_uploader("Upload a csv file", type=["csv"])
+file = st.file_uploader("Upload a CSV file", type=["csv"])
 if file is not None:
     df = pd.read_csv(file)
-    st.dataframe(df)
-
-    question = st.text_area("What question would you like to ask of this data?")
+    st.write(df)
+    
+    # message sent to the AI model. This builds the prompt 
+    question = st.text_input("Enter a question to ask about the data:")
     if question:
-        prompt = "With the following data:\n"
-        prompt += df.to_string(index=False)
+        prompt = 'With the following data:\n'
+        prompt += df.to_string(index=False) # converted to text form (no row numbers),
         prompt += "\n\n"
-        prompt += "Answer the following question:\n"
+        prompt += "Answer the following question:\n"    
         prompt += question
-
+        
         url = "https://cent.ischool-iot.net/api/genai/generate"
-        response = requests.post(url, data={"query": prompt}, headers={"x-api-key" : APIKEY})
+        response = requests.post(url, data={"query": prompt}, headers={"X-API-KEY": APIKEY}) 
         response.raise_for_status()
         results = response.json()
-        st.write(results)
+        st.write(results)  
