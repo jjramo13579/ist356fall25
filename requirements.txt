@@ -6,3 +6,13 @@ pillow
 ipywidgets
 lxml
 openpyxl
+requests
+matplotlib
+fastapi[all]
+pytest-playwright
+playwright
+seaborn
+geopandas[all]
+mapclassify
+folium
+streamlit-folium

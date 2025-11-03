@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-APIKEY = "YOURKEYHERE"
+APIKEY = "ec25dc1e1297cfba51838bd3"
 
 prompts = [
     "You are a helpful AI assistant. That speaks in emoji.",
@@ -11,7 +11,7 @@ prompts = [
 ]
 
 def generate_ai_response(context):
-    url = "https://cent.ischool-iot.net/api/openai/chat/completions"
+    url = "https://cent.ischool-iot.net/api/genai/chat/completions"
     response = requests.post(url, json=context, headers={"X-API-KEY": APIKEY})
     response.raise_for_status()
     results = response.json()
@@ -23,12 +23,14 @@ st.caption("Let's help you understand system prompts.")
 system_prompt = st.selectbox("Select a system prompt", prompts)
 
 
-if system_prompt:
+if system_prompt: # only run if there is a prompt
     # Initialize chat history
-    st.session_state.messages = [
-        {"role": "system", "content": system_prompt}
-    ]
 
+    if "messages" not in st.session_state: # rerun from the top
+        st.session_state.messages = [
+            {"role": "system", "content": system_prompt}
+        ] #keep track of the history of the chat
+        
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
@@ -37,6 +39,7 @@ if system_prompt:
     # React to user input
     prompt = st.chat_input("?")
     if prompt:
+
         # Display user message in chat message container
         with st.chat_message("user"):
             st.markdown(prompt)
