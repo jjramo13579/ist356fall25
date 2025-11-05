@@ -1,8 +1,14 @@
-from fastapi import FastAPI, Body, HTTPException
+from fastapi import FastAPI, Query
 import pandas as pd
-
-
-df = pd.read_csv("https://raw.githubusercontent.com/mafudge/datasets/refs/heads/master/flights/sample-flights.csv")
+import numpy as np
+import json
 app = FastAPI()
 
+#df = pd.read_csv("https://raw.githubusercontent.com/mafudge/datasets/refs/heads/master/flights/sample-flights.csv")
+
+
+#load data 
+
+url = "https://raw.githubusercontent.com/mafudge/datasets/refs/heads/master/flights/sample-flights.csv"
+df = pd.read_csv(url)
 
